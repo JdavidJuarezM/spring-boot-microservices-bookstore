@@ -1,6 +1,7 @@
 name: Catalog Service
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - catalog-service/**
