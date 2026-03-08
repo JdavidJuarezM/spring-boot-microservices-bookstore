@@ -168,6 +168,9 @@
                     <failOnNoGitDirectory>false</failOnNoGitDirectory>
                     <failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
                     <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <useNativeGit>false</useNativeGit>
+                    <offline>true</offline>
+                    <skip>${git-commit-id.skip}</skip>
                     <includeOnlyProperties>
                         <includeOnlyProperty>^git.branch$</includeOnlyProperty>
                         <includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>

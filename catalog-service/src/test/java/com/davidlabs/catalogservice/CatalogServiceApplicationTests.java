@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(ContainersConfig.class)
-class CatalogServiceApplicationTests {
+class CatalogServiceApplicationTests extends AbstractIT {
 
     @Test
     void contextLoads() {}
