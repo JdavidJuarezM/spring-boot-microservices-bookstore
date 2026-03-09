@@ -16,6 +16,7 @@ import org.springframework.test.context.jdbc.Sql;
 class ProductControllerTest extends AbstractIT {
 
     @Test
+    @SuppressWarnings("all")
     void shouldReturnProducts() {
         given().contentType(ContentType.JSON)
                 .when()
@@ -33,6 +34,7 @@ class ProductControllerTest extends AbstractIT {
     }
 
     @Test
+    @SuppressWarnings("all")
     void shouldGetProductByCode() {
         Product product = given().contentType(ContentType.JSON)
                 .when()
@@ -51,6 +53,7 @@ class ProductControllerTest extends AbstractIT {
     }
 
     @Test
+    @SuppressWarnings("all")
     void shouldReturnNotFoundWhenProductCodeNotExists() {
         String code = "invalid_product_code";
         given().contentType(ContentType.JSON)

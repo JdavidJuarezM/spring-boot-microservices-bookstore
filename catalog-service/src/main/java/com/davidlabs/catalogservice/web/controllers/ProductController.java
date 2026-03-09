@@ -2,7 +2,9 @@ package com.davidlabs.catalogservice.web.controllers;
 
 import com.davidlabs.catalogservice.domain.PagedResult;
 import com.davidlabs.catalogservice.domain.Product;
+import com.davidlabs.catalogservice.domain.ProductNotFoundException;
 import com.davidlabs.catalogservice.domain.ProductService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,10 @@ class ProductController {
     }
 
     @GetMapping("/{code}")
-    Product getProductByCode(@PathVariable String code) {
-        return productService.getProductByCode(code);
+    ResponseEntity<Product> getProductByCode(@PathVariable String code) {
+        return productService.getProductByCode(code)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> ProductNotFoundException.forCode(code));
+
     }
 }

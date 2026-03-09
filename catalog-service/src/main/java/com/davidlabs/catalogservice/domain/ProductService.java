@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 public class ProductService {
@@ -35,10 +37,7 @@ public class ProductService {
                 productsPage.hasPrevious());
     }
 
-    public Product getProductByCode(String code) {
-        return productRepository
-                .findByCode(code)
-                .map(ProductMapper::toProduct)
-                .orElseThrow(() -> new ProductNotFoundException(code));
+    public Optional<Product> getProductByCode(String code) {
+        return productRepository.findByCode(code).map(ProductMapper::toProduct);
     }
 }
